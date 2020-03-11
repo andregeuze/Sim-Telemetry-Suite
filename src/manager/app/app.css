@@ -1,0 +1,43 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+}
+
+#resizer {
+    cursor: col-resize;
+    width: 1px;
+    background: grey;
+}
+
+#app {
+    font-size: 0.75em;
+}
+
+#sidebar {
+    width: 400px;
+}
+
+tr.pit {
+    color: darkgray;
+}
+
+tr.driving {
+    color: inherit;
+}
+
+.staging {
+    border-bottom: 5px solid deepskyblue;
+}
+
+.development, .menu {
+    font-size: 1.5em;
+    background: #ff5800 !important;
+    color: white;
+}

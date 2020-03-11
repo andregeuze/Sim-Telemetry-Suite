@@ -1,0 +1,9 @@
+html, body {
+    height: 100%;
+    user-select: none;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}

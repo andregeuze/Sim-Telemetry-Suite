@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Manager</title>
+    <!-- Define inlined JavaScript -->
+    <script type="text/javascript" src="\app.js"></script>
+</head>
+
+<body>
+    <div id="app" class="grid-y medium-grid-frame">
+        <div class="top-bar" v-bind:class="environment">
+            <div class="top-bar-left">
+                <ul class="menu">
+                    <li v-if="trackData.TrackName" class="menu-text">{{tenant}} - {{trackData.TrackName}} - {{trackData.Mode}} Mode</li>
+                    <li v-else class="menu-text">{{tenant}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cell medium-auto grid-x">
+            <div id="sidebar" class="cell">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>P</th>
+                            <th>Driver</th>
+                            <th>Status</th>
+                            <th>Best Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="vehicle in trackData.Vehicles" v-bind:class="vehicle.Status === 'Pit' || vehicle.Status === 'Disconnected' ? 'pit' : 'driving'">
+                            <td>{{ vehicle.Place }}</td>
+                            <td>{{ vehicle.DriverName }}</td>
+                            <td>{{ vehicle.Status }}</td>
+                            <td>{{ vehicle.BestLap }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="resizer" class="cell"></div>
+            <div class="grid-container" v-if="trackData.Mode === 'HotSeat'">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-12 cell">
+                        <label>Enter new driver:
+                            <input v-model="nickNameInput" type="text" placeholder="Nickname">
+                        </label>
+                        <input v-on:click="changeNickName" type="submit" class="button" value="Let's drive!">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
